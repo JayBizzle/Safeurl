@@ -9,7 +9,7 @@ class Safeurl {
      *
      * @param array $options
      */
-    public function __construct( $options='' ) {
+    public function __construct() {
 
     	// setup the default options
     	$default = Config::get('safeurl::config');
@@ -18,7 +18,10 @@ class Safeurl {
     		$this->$property = $value;
     	}
 
-    	// setup any custom options
+    }
+
+    public function setUserOptions($options) {
+		// setup any custom options
         if (is_array($options)) {
             foreach($options as $property => $value) {
                 $this->$property = $value;
@@ -45,7 +48,11 @@ class Safeurl {
      * @param string $text
      * @return string
      */
-    public function make($text) {
+    public function make($text, $options = null) {
+
+    	if(!is_null($options)) {
+    		$this->setUserOptions($options);
+    	}
 
         //Shortcut
         $s = $this->separator;
