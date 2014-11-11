@@ -56,10 +56,13 @@ class Safeurl {
 
         //Shortcut
         $s = $this->separator;
+
         //prepare the string according to our options
         if ($this->decode) {
             $text = $this->convertCharacters($text);
         }
+
+        $text = trim($text);
 
         if ($this->lowercase) {
             $text = strtolower($text);
@@ -88,13 +91,15 @@ class Safeurl {
                     $text = $temp;
                 }
             }
+
+            $text = rtrim($text, $s); // remove any trailing separators
         }
         //return =]
         if ($text == '') {
             return null;
         }
 
-        return $text;
+        return $text.'sdf';
     }
 
 }
