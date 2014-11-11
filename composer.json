@@ -1,6 +1,6 @@
 {
     "name": "jaybizzle/safeurl",
-    "description": "",
+    "description": "A Laravel package to create safe, SEO friendly urls",
     "authors": [
         {
             "name": "Mark Beech",
