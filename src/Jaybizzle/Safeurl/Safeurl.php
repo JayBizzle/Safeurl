@@ -99,7 +99,7 @@ class Safeurl {
             return null;
         }
 
-        return $text.'sdf';
+        return $text;
     }
 
 }
