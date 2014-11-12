@@ -103,3 +103,8 @@ class Safeurl {
     }
 
 }
+
+/*
+ * Thanks to timemachine3030 for the idea/implementation for this class.
+ * https://github.com/timemachine3030
+ */
