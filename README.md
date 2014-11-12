@@ -1,6 +1,6 @@
 Safeurl
 =======
-[![Latest Stable Version](https://poser.pugx.org/jaybizzle/safeurl/version.svg)](https://packagist.org/packages/jaybizzle/safeurl) [![Latest Unstable Version](https://poser.pugx.org/jaybizzle/safeurl/v/unstable.svg)](//packagist.org/packages/jaybizzle/safeurl) [![Total Downloads](https://poser.pugx.org/jaybizzle/safeurl/downloads.svg)](https://packagist.org/packages/jaybizzle/safeurl) [![Build Status](https://travis-ci.org/JayBizzle/Safeurl.svg?branch=master)](https://travis-ci.org/JayBizzle/Safeurl)
+[![Latest Stable Version](https://poser.pugx.org/jaybizzle/safeurl/v/stable.svg)](https://packagist.org/packages/jaybizzle/safeurl) [![Total Downloads](https://poser.pugx.org/jaybizzle/safeurl/downloads.svg)](https://packagist.org/packages/jaybizzle/safeurl) [![Latest Unstable Version](https://poser.pugx.org/jaybizzle/safeurl/v/unstable.svg)](https://packagist.org/packages/jaybizzle/safeurl) [![License](https://poser.pugx.org/jaybizzle/safeurl/license.svg)](https://packagist.org/packages/jaybizzle/safeurl) [![Build Status](https://travis-ci.org/JayBizzle/Safeurl.svg?branch=master)](https://travis-ci.org/JayBizzle/Safeurl)
 
 A Laravel package to create safe, SEO friendly urls
 
