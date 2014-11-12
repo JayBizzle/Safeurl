@@ -28,13 +28,6 @@ class SafeurlServiceProvider extends ServiceProvider {
 	 */
 	public function register()
 	{
-		// Auto register?
-		// $this->app->booting(function()
-		// {
-		// 	$loader = \Illuminate\Foundation\AliasLoader::getInstance();
-		// 	$loader->alias('Safeurl', 'Jaybizzle\Safeurl\Facades\Safeurl');
-		// });
-
 		$this->app['safeurl'] = $this->app->share(function($app)
 		{
 			return new Safeurl;
