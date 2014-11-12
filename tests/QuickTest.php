@@ -1,25 +1,30 @@
 <?php
 
 use Jaybizzle\Safeurl\Safeurl;
-use Illuminate\Support\Facades\Config;
+use Orchestra\Testbench\TestCase;
 
-class QuickTest extends \Illuminate\Foundation\Testing\TestCase
+class QuickTest extends TestCase
 {
 	protected $safeurl;
 
-	public function createApplication()
+	protected function getPackageProviders()
 	{
-		$unitTesting = true;
-		$testEnvironment = 'testing';
-		return require __DIR__.'/../../../../bootstrap/start.php';
+		return array('Jaybizzle\Safeurl\SafeurlServiceProvider');
 	}
-
 
 	public function setUp()
 	{
 		parent::setUp();
 		$this->safeurl = new Safeurl;
 	}
+
+	protected function getEnvironmentSetUp($app)
+	{
+		// reset base path to point to our package's src directory
+		$app['path.base'] = __DIR__ . '/../src';
+	}
+
+
 
 	public function testBasicDefaultSetup()
 	{
