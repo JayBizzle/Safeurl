@@ -1,6 +1,9 @@
 {
     "name": "jaybizzle/safeurl",
     "description": "A Laravel package to create safe, SEO friendly urls",
+    "keywords": ["laravel","slug","SEO","url","string","safe","friendly_url"],
+    "homepage": "http://github.com/JayBizzle/Safeurl",
+    "license": "MIT",
     "authors": [
         {
             "name": "Mark Beech",
