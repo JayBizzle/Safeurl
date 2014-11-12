@@ -7,7 +7,7 @@ A Laravel package to create safe, SEO friendly urls
 Installation
 ============
 
-Run `composer require jaybizzle/safeurk 0.1.*` or add `"jaybizzle/safeurl": "0.1.*"` to your `composer.json` file
+Run `composer require jaybizzle/safeurl 0.1.*` or add `"jaybizzle/safeurl": "0.1.*"` to your `composer.json` file
 
 Add the following to the `providers` array in your `app/config/app.php` file..
 
