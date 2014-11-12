@@ -4,15 +4,15 @@ use Illuminate\Support\Facades\Config;
 
 class Safeurl {
 	
-    public decode;
-    public decode_charset;
-    public lowercase;
-    public strip;
-    public maxlength;
-    public whole_word;
-    public blank;
-    public separator;
-    public translation_table;
+    public $decode;
+    public $decode_charset;
+    public $lowercase;
+    public $strip;
+    public $maxlength;
+    public $whole_word;
+    public $blank;
+    public $separator;
+    public $translation_table;
 
 	/**
      * Class constructor
