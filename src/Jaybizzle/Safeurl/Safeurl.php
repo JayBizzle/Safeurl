@@ -106,7 +106,7 @@ class Safeurl {
         }
         //return =]
         if ($text == '') {
-            return null;
+            return $this->blank;
         }
 
         return $text;

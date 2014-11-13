@@ -107,4 +107,13 @@ class QuickTest extends TestCase
 		$this->assertEquals('the-quick-brown-fox-jumps-over-the-lazy-dog-and-cat', $safeString);
 	}
 
+	public function testStringWithNoAlphanumChars()
+	{
+		$safeString = $this->safeurl->make('!@£$%^*()+');
+		$this->assertEquals('no-title', $safeString);
+
+		$safeString = $this->safeurl->make('!@£$%^*()+', array('blank' => null));
+		$this->assertEquals(null, $safeString);
+	}
+
 }
