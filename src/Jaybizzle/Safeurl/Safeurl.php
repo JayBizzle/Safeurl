@@ -4,20 +4,18 @@ use Illuminate\Support\Facades\Config;
 
 class Safeurl {
 	
-    public $decode;
-    public $decode_charset;
-    public $lowercase;
-    public $strip;
-    public $maxlength;
-    public $whole_word;
-    public $blank;
-    public $separator;
-    public $translation_table;
+    public $decode;             // Decode html entities in string?
+    public $decode_charset;     // Charset to use if $decode is set to true
+    public $lowercase;          // Turns string into all lowercase letters
+    public $strip;              // Strip out html tags from string?
+    public $maxlength;          // Maximum length of resulting title
+    public $whole_word;         // If maxlength is reached, chop at nearest whole word? or hard chop?
+    public $blank;              // What title to use if no alphanumeric characters can be found
+    public $separator;          // Allow a differnt character to be used as the separator.
+    public $translation_table;  // A table of UTF-8 characters and what to make them.
 
 	/**
      * Class constructor
-     *
-     * @param array $options
      */
     public function __construct() {
 
@@ -31,24 +29,24 @@ class Safeurl {
     }
 
     /**
-     * the worker function
+     * the worker method
      *
      * @param string $text
      * @return string
      */
     public function make($text, $options = null) {
 
-    	$this->setUserOptions($options); // set user defined options
+    	$this->setUserOptions($options);  // set user defined options
 
-        $text = $this->decode($text);   // decode UTF-8 chars
+        $text = $this->decode($text);  // decode UTF-8 chars
 
         $text = trim($text);  // trim
 
-        $text = $this->lower($text); // convert to lowercase
+        $text = $this->lower($text);  // convert to lowercase
         
-        $text = $this->strip($text); // strip HTML
+        $text = $this->strip($text);  // strip HTML
 
-        $text = $this->filter($text); // filter the input
+        $text = $this->filter($text);  // filter the input
 
         //chop?
         if (strlen($text) > $this->maxlength) {
@@ -76,6 +74,10 @@ class Safeurl {
         return $text;
     }
 
+    /**
+     * Set user defined options
+     * @param array $options
+     */
     private function setUserOptions($options) {
         if (is_array($options)) {
             foreach($options as $property => $value) {
@@ -97,18 +99,38 @@ class Safeurl {
         return $text;
     }
 
+    /**
+     * Decode HTML entities and UTF-8 characters
+     * @param  string $text
+     * @return string
+     */
     private function decode($text) {
         return ($this->decode) ? $this->convertCharacters($text) : $text;
     }
 
+    /**
+     * Convert string to lowercase
+     * @param  string $text
+     * @return string
+     */
     private function lower($text) {
         return ($this->lowercase) ? strtolower($text) : $text;
     }
 
+    /**
+     * Strip HTML tages
+     * @param  string $text
+     * @return string
+     */
     private function strip($text) {
         return ($this->strip) ? strip_tags($text) : $text;
     }
 
+    /**
+     * Strip anything that isn't alphanumeric or an underscore
+     * @param  string $text
+     * @return string
+     */
     private function filter($text) {
         $text = preg_replace("/[^&a-z0-9-_\s']/i", '', $text);
         $text = str_replace(' ', $this->separator, $text);
