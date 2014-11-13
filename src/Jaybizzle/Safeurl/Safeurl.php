@@ -30,8 +30,53 @@ class Safeurl {
 
     }
 
-    public function setUserOptions($options) {
-		// setup any custom options
+    /**
+     * the worker function
+     *
+     * @param string $text
+     * @return string
+     */
+    public function make($text, $options = null) {
+
+    	$this->setUserOptions($options); // set user defined options
+
+        $text = $this->decode($text);   // decode UTF-8 chars
+
+        $text = trim($text);  // trim
+
+        $text = $this->lower($text); // convert to lowercase
+        
+        $text = $this->strip($text); // strip HTML
+
+        $text = $this->filter($text); // filter the input
+
+        //chop?
+        if (strlen($text) > $this->maxlength) {
+            $text = substr($text, 0, $this->maxlength);
+
+            if ($this->whole_word) {
+                /**
+                 * If maxlength is small and leaves us with only part of one
+                 * word ignore the "whole_word" filtering.
+                 */
+                $words = explode($this->separator, $text);
+                $temp  = implode($this->separator, array_diff($words, array(array_pop($words))));
+                if ($temp != '') {
+                    $text = $temp;
+                }
+            }
+
+            $text = rtrim($text, $this->separator); // remove any trailing separators
+        }
+        //return =]
+        if ($text == '') {
+            return $this->blank;
+        }
+
+        return $text;
+    }
+
+    private function setUserOptions($options) {
         if (is_array($options)) {
             foreach($options as $property => $value) {
                 $this->$property = $value;
@@ -52,62 +97,22 @@ class Safeurl {
         return $text;
     }
 
-    /**
-     * the worker function
-     *
-     * @param string $text
-     * @return string
-     */
-    public function make($text, $options = null) {
+    private function decode($text) {
+        return ($this->decode) ? $this->convertCharacters($text) : $text;
+    }
 
-    	if(!is_null($options)) {
-    		$this->setUserOptions($options);
-    	}
+    private function lower($text) {
+        return ($this->lowercase) ? strtolower($text) : $text;
+    }
 
-        //Shortcut
-        $s = $this->separator;
+    private function strip($text) {
+        return ($this->strip) ? strip_tags($text) : $text;
+    }
 
-        //prepare the string according to our options
-        if ($this->decode) {
-            $text = $this->convertCharacters($text);
-        }
-
-        $text = trim($text);
-
-        if ($this->lowercase) {
-            $text = strtolower($text);
-        }
-        if ($this->strip) {
-            $text = strip_tags($text);
-        }
-
-        //filter
+    private function filter($text) {
         $text = preg_replace("/[^&a-z0-9-_\s']/i", '', $text);
-        $text = str_replace(' ', $s, $text);
-        $text = trim(preg_replace("/{$s}{2,}/", $s, $text), $s);
-
-        //chop?
-        if (strlen($text) > $this->maxlength) {
-            $text = substr($text, 0, $this->maxlength);
-
-            if ($this->whole_word) {
-                /**
-                 * If maxlength is small and leaves us with only part of one
-                 * word ignore the "whole_word" filtering.
-                 */
-                $words = explode($s, $text);
-                $temp  = implode($s, array_diff($words, array(array_pop($words))));
-                if ($temp != '') {
-                    $text = $temp;
-                }
-            }
-
-            $text = rtrim($text, $s); // remove any trailing separators
-        }
-        //return =]
-        if ($text == '') {
-            return $this->blank;
-        }
+        $text = str_replace(' ', $this->separator, $text);
+        $text = trim(preg_replace("/{$this->separator}{2,}/", $this->separator, $text), $this->separator);
 
         return $text;
     }
