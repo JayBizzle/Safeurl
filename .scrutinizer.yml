@@ -4,3 +4,4 @@ tools:
     php_code_sniffer:
         config:
             standard: PSR2
+            tab_width: 4
