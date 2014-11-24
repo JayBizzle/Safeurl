@@ -33,7 +33,7 @@ echo Safeurl::make('The quick brown fox jumps over the lazy dog');
 Options
 ==================
 
-These are the default global options. If you want to define your own global options, publish the config with `php artisan config:publish jaybizzle/safeurl` and change the settings in `app/config/packages/jaybizzle/safurl/config.php`.
+These are the default global options. If you want to define your own global options, publish the config with `php artisan config:publish jaybizzle/safeurl` and change the settings in `app/config/packages/jaybizzle/safeurl/config.php`.
 
 Options can be individually overridden on each call to `Safeurl::make(string, options)`
 
