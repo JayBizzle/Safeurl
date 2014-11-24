@@ -63,7 +63,7 @@ array(
          * Special characters:
          */
         "'"    => '',       // Single quote
-        '&'    => ' and ',  // Amperstand
+        '&'    => ' and ',  // Ampersand
         "\r\n" => ' ',      // Newline
         "\n"   => ' '       // Newline
     )
