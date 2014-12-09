@@ -1,7 +1,5 @@
 <?php namespace Jaybizzle\Safeurl;
 
-use Illuminate\Support\Facades\Config;
-
 class Safeurl {
 	
 	public $decode;             // Decode html entities in string?
@@ -20,7 +18,7 @@ class Safeurl {
 	public function __construct() {
 
 		// setup the default options
-		$default = Config::get('safeurl::config');
+		$default = app('config')->get('safeurl::config');
 
 		foreach($default as $property => $value) {
 			$this->$property = $value;
