@@ -18,7 +18,7 @@ class Safeurl {
 	public function __construct() {
 
 		// setup the default options
-		$default = app('config')->get('safeurl::config');
+		$default = config('safeurl');
 
 		foreach($default as $property => $value) {
 			$this->$property = $value;
