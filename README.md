@@ -2,14 +2,14 @@ Safeurl
 =======
 [![Latest Stable Version](https://poser.pugx.org/jaybizzle/safeurl/v/stable.svg)](https://packagist.org/packages/jaybizzle/safeurl) [![Total Downloads](https://poser.pugx.org/jaybizzle/safeurl/downloads.svg)](https://packagist.org/packages/jaybizzle/safeurl) [![Latest Unstable Version](https://poser.pugx.org/jaybizzle/safeurl/v/unstable.svg)](https://packagist.org/packages/jaybizzle/safeurl) [![License](https://poser.pugx.org/jaybizzle/safeurl/license.svg)](https://packagist.org/packages/jaybizzle/safeurl) [![Build Status](https://travis-ci.org/JayBizzle/Safeurl.svg?branch=master)](https://travis-ci.org/JayBizzle/Safeurl) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/JayBizzle/Safeurl/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/JayBizzle/Safeurl/?branch=master)
 
-A Laravel package to create safe, SEO friendly urls
+A Laravel 5 package to create safe, SEO friendly urls
 
 Installation
 ============
 
-Run `composer require jaybizzle/safeurl 0.1.*` or add `"jaybizzle/safeurl": "0.1.*"` to your `composer.json` file
+Run `composer require jaybizzle/safeurl 0.2.*` or add `"jaybizzle/safeurl": "0.2.*"` to your `composer.json` file
 
-Add the following to the `providers` array in your `app/config/app.php` file..
+Add the following to the `providers` array in your `config/app.php` file..
 
 ```PHP
   'Jaybizzle\Safeurl\SafeurlServiceProvider',
@@ -33,7 +33,7 @@ echo Safeurl::make('The quick brown fox jumps over the lazy dog');
 Options
 ==================
 
-These are the default global options. If you want to define your own global options, publish the config with `php artisan config:publish jaybizzle/safeurl` and change the settings in `app/config/packages/jaybizzle/safeurl/config.php`.
+These are the default global options. If you want to define your own global options, publish the config with `php artisan vendor:publish --provider="Jaybizzle\Safeurl\SafeurlServiceProvider"` and change the settings in `config/safeurl.php`.
 
 Options can be individually overridden on each call to `Safeurl::make(string, options)`
 
