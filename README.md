@@ -4,6 +4,8 @@ Safeurl
 
 A Laravel 5 package to create safe, SEO friendly urls
 
+For the Laravel 4 version, see the [v1.0 branch](https://github.com/JayBizzle/Safeurl/tree/v0.1)
+
 Installation
 ============
 
