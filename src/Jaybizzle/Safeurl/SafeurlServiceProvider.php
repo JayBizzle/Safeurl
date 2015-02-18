@@ -18,7 +18,7 @@ class SafeurlServiceProvider extends ServiceProvider {
 	 */
 	public function boot()
 	{
-		$this->package('jaybizzle/safeurl');
+		//
 	}
 
 	/**
