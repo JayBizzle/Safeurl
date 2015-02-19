@@ -59,7 +59,7 @@ class QuickTest extends TestCase
 	public function testTranslation()
 	{
 		// We are only testing UTF8 chars here, not the new lines and ampersands etc
-		$default = app('config')->get('safeurl::config');
+		$default = config('safeurl');
 
 		$test = implode(" ", array_keys(array_slice($default['translation_table'], 0, -4)));
 		$result = implode("-", array_slice($default['translation_table'], 0, -4));
