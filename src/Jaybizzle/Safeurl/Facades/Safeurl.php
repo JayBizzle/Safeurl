@@ -1,14 +1,18 @@
-<?php namespace Jaybizzle\Safeurl\Facades;
- 
+<?php
+
+namespace Jaybizzle\Safeurl\Facades;
+
 use Illuminate\Support\Facades\Facade;
- 
-class Safeurl extends Facade {
- 
-  /**
+
+class Safeurl extends Facade
+{
+    /**
    * Get the registered name of the component.
    *
    * @return string
    */
-  protected static function getFacadeAccessor() { return 'safeurl'; }
- 
+  protected static function getFacadeAccessor()
+  {
+      return 'safeurl';
+  }
 }
