@@ -34,9 +34,13 @@ class SafeurlServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app['safeurl'] = $this->app->share(function ($app) {
-            return new Safeurl();
-        });
+		$this->app->bind('Jaybizzle\Safeurl\Safeurl', function ($app) {
+				if ($this->isLumen()) {
+						$app->configure('safeurl');
+				}
+
+				return new Jaybizzle\Safeurl();
+		});
     }
 
     /**
