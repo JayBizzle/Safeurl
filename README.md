@@ -36,6 +36,7 @@ Add the following to the `providers` array in your `config/app.php` file..
 
 ```PHP
   'Safeurl' => Jaybizzle\Safeurl\Facades\Safeurl::class,
+```
 
 Usage
 ==================
