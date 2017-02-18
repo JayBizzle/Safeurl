@@ -1,51 +1,58 @@
-<?php
-
-namespace Jaybizzle\Safeurl;
+<?php namespace Jaybizzle\Safeurl;
 
 use Illuminate\Support\ServiceProvider;
 
-class SafeurlServiceProvider extends ServiceProvider
-{
-    /**
-     * Indicates if loading of the provider is deferred.
-     *
-     * @var bool
-     */
-    protected $defer = false;
+class SafeurlServiceProvider extends ServiceProvider {
 
-    /**
-     * Bootstrap the application events.
-     *
-     * @return void
-     */
-    public function boot()
-    {
-        $this->publishes(array(
-            __DIR__.'/../../config/config.php' => base_path('config/safeurl.php'),
-        ));
+	/**
+	 * Indicates if loading of the provider is deferred.
+	 *
+	 * @var bool
+	 */
+	protected $defer = false;
 
-        $this->mergeConfigFrom(__DIR__.'/../../config/config.php', 'safeurl');
-    }
+	/**
+	 * Bootstrap the application events.
+	 *
+	 * @return void
+	 */
+	public function boot()
+	{
+		$this->publishes([
+			__DIR__.'/../../config/config.php' => base_path('config/safeurl.php')
+		]);
 
-    /**
-     * Register the service provider.
-     *
-     * @return void
-     */
-    public function register()
-    {
-        $this->app['safeurl'] = $this->app->share(function ($app) {
-            return new Safeurl();
-        });
-    }
+		$this->mergeConfigFrom(__DIR__.'/../../config/config.php', 'safeurl');
+	}
 
-    /**
-     * Get the services provided by the provider.
-     *
-     * @return array
-     */
-    public function provides()
-    {
-        return array();
-    }
+	/**
+	 * Register the service provider.
+	 *
+	 * @return void
+	 */
+	public function register()
+	{
+		$this->app->bind('Jaybizzle\Safeurl\Safeurl', function ($app) {
+			if ($this->isLumen()) {
+				$app->configure('safeurl');
+			}
+			return new Safeurl();
+		});
+	}
+
+	private function isLumen()
+	{
+		return is_a(\app(), 'Laravel\Lumen\Application');
+	}
+
+	/**
+	 * Get the services provided by the provider.
+	 *
+	 * @return array
+	 */
+	public function provides()
+	{
+		return array();
+	}
+
 }

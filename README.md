@@ -10,6 +10,7 @@ Installation
 ============
 
 Run `composer require jaybizzle/safeurl 0.2.*` or add `"jaybizzle/safeurl": "0.2.*"` to your `composer.json` file
+For Laravel 5 or higher `composer require jaybizzle/safeurl 0.3.*`
 
 Add the following to the `providers` array in your `config/app.php` file..
 
@@ -21,6 +22,20 @@ Add the following to the `providers` array in your `config/app.php` file..
 
 ```PHP
   'Safeurl'           => 'Jaybizzle\Safeurl\Facades\Safeurl',
+```
+
+For Laravel 5 or higher
+
+Add the following to the `providers` array in your `config/app.php` file..
+
+```PHP
+  Jaybizzle\Safeurl\SafeurlServiceProvider::class,
+```
+
+...and the following to your `aliases` array...
+
+```PHP
+  'Safeurl' => Jaybizzle\Safeurl\Facades\Safeurl::class,
 ```
 
 Usage
