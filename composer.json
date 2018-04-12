@@ -22,7 +22,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Jaybizzle\\": "src/Jaybizzle"
+            "Jaybizzle\\Safeurl\\": "src/"
         }
     },
     "minimum-stability": "stable"
