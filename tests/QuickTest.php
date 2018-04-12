@@ -9,7 +9,7 @@ class QuickTest extends TestCase
 
     protected function getPackageProviders($app)
     {
-        return array('Jaybizzle\Safeurl\SafeurlServiceProvider');
+        return array(Jaybizzle\Safeurl\SafeurlServiceProvider::class);
     }
 
     public function setUp()
