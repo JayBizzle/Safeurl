@@ -20,9 +20,9 @@ class SafeurlServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->publishes(array(
+        $this->publishes([
             __DIR__.'/../../config/config.php' => base_path('config/safeurl.php'),
-        ));
+        ]);
 
         $this->mergeConfigFrom(__DIR__.'/../../config/config.php', 'safeurl');
     }
@@ -46,6 +46,6 @@ class SafeurlServiceProvider extends ServiceProvider
      */
     public function provides()
     {
-        return array();
+        return [];
     }
 }
