@@ -59,7 +59,7 @@ class Safeurl
                  * word ignore the "whole_word" filtering.
                  */
                 $words = explode($this->separator, $text);
-                $temp = implode($this->separator, array_diff($words, array(array_pop($words))));
+                $temp = implode($this->separator, array_diff($words, [array_pop($words)]));
                 if ($temp != '') {
                     $text = $temp;
                 }

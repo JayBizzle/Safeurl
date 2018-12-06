@@ -1,7 +1,7 @@
 <?php
 
 
-return array(
+return [
 
 /*
      * decode html entities in string?
@@ -56,7 +56,7 @@ return array(
      * @link http://www.php.net/manual/en/function.strtr.php#90925
      * @var array
      */
-    'translation_table' => array(
+    'translation_table' => [
         'Š' => 'S', 'š' => 's', 'Đ' => 'Dj', 'Ð' => 'Dj', 'đ' => 'dj', 'Ž' => 'Z', 'ž' => 'z', 'Č' => 'C', 'č' => 'c', 'Ć' => 'C', 'ć' => 'c',
         'À' => 'A', 'Á' => 'A', 'Â' => 'A', 'Ã' => 'A', 'Ä' => 'A', 'Å' => 'A', 'Æ' => 'A', 'Ç' => 'C', 'È' => 'E', 'É' => 'E',
         'Ê' => 'E', 'Ë' => 'E', 'Ì' => 'I', 'Í' => 'I', 'Î' => 'I', 'Ï' => 'I', 'Ñ' => 'N', 'Ò' => 'O', 'Ó' => 'O', 'Ô' => 'O',
@@ -73,8 +73,6 @@ return array(
         "\r\n" => ' ',      // Newline
         "\n"   => ' ',       // Newline
 
-    ),
+    ],
 
-
-
-);
+];

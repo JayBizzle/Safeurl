@@ -9,7 +9,7 @@ class QuickTest extends TestCase
 
     protected function getPackageProviders($app)
     {
-        return array('Jaybizzle\Safeurl\SafeurlServiceProvider');
+        return ['Jaybizzle\Safeurl\SafeurlServiceProvider'];
     }
 
     public function setUp()
@@ -31,7 +31,7 @@ class QuickTest extends TestCase
 
     public function testCase()
     {
-        $this->assertEquals('The-quick-brown-fox-jumps-over-the-lazy-dog', $this->safeurl->make('The quick brown fox jumps over the lazy dog', array('lowercase' => false)));
+        $this->assertEquals('The-quick-brown-fox-jumps-over-the-lazy-dog', $this->safeurl->make('The quick brown fox jumps over the lazy dog', ['lowercase' => false]));
     }
 
     public function testSpecialChars()
@@ -46,12 +46,12 @@ class QuickTest extends TestCase
 
     public function testTruncateAtWholeWord()
     {
-        $this->assertEquals('the-quick-brown', $this->safeurl->make('The quick brown fox jumps over the lazy dog', array('maxlength' => 18)));
+        $this->assertEquals('the-quick-brown', $this->safeurl->make('The quick brown fox jumps over the lazy dog', ['maxlength' => 18]));
     }
 
     public function testTruncateAtHardLimit()
     {
-        $this->assertEquals('the-quick-brown-fo', $this->safeurl->make('The quick brown fox jumps over the lazy dog', array('maxlength' => 18, 'whole_word' => false)));
+        $this->assertEquals('the-quick-brown-fo', $this->safeurl->make('The quick brown fox jumps over the lazy dog', ['maxlength' => 18, 'whole_word' => false]));
     }
 
     public function testTranslation()
@@ -62,7 +62,7 @@ class QuickTest extends TestCase
         $test = implode(' ', array_keys(array_slice($default['translation_table'], 0, -4)));
         $result = implode('-', array_slice($default['translation_table'], 0, -4));
 
-        $this->assertEquals(strtolower($result), $this->safeurl->make($test, array('maxlength' => 1000)));
+        $this->assertEquals(strtolower($result), $this->safeurl->make($test, ['maxlength' => 1000]));
     }
 
     public function testBigMess()
@@ -89,17 +89,17 @@ class QuickTest extends TestCase
 			style=\"color: #000099; font-weight: bold;\">\\</span>v,,,,,,,,,,n%
 			$#@!~e*(+=t\'</span>,</li>';
 
-        $this->assertEquals('safeurl-new-safeurl', $this->safeurl->make($big_mess, array('maxlength' => 20)));
+        $this->assertEquals('safeurl-new-safeurl', $this->safeurl->make($big_mess, ['maxlength' => 20]));
     }
 
     public function testWholeWordWithOnlyOneWord()
     {
-        $this->assertEquals('super', $this->safeurl->make('supercalafragalisticexpialadoshus', array('maxlength' => 5, 'whole_word' => true)));
+        $this->assertEquals('super', $this->safeurl->make('supercalafragalisticexpialadoshus', ['maxlength' => 5, 'whole_word' => true]));
     }
 
     public function testHtmlEntityDecode()
     {
-        $safeString = $this->safeurl->make('The quick brown fox jumps over the lazy dog & cat', array('decode' => true, 'maxlength' => 500));
+        $safeString = $this->safeurl->make('The quick brown fox jumps over the lazy dog & cat', ['decode' => true, 'maxlength' => 500]);
         $this->assertEquals('the-quick-brown-fox-jumps-over-the-lazy-dog-and-cat', $safeString);
     }
 
@@ -108,7 +108,7 @@ class QuickTest extends TestCase
         $safeString = $this->safeurl->make('!@£$%^*()+');
         $this->assertEquals('no-title', $safeString);
 
-        $safeString = $this->safeurl->make('!@£$%^*()+', array('blank' => null));
+        $safeString = $this->safeurl->make('!@£$%^*()+', ['blank' => null]);
         $this->assertEquals(null, $safeString);
     }
 }
