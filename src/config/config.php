@@ -2,7 +2,7 @@
 
 return [
 
-/*
+    /*
      * decode html entities in string?
      * @var boolean
      */
