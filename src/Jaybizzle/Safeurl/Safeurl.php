@@ -19,7 +19,6 @@ class Safeurl
      */
     public function __construct()
     {
-
         // setup the default options
         $default = config('safeurl');
 
